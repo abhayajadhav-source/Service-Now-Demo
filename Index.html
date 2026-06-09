@@ -8,16 +8,12 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f2; font-size: 14px; }
-
-/* Shell */
 .sn-shell { background: #293e40; height: 48px; display: flex; align-items: center; padding: 0 20px; gap: 16px; }
 .sn-logo { color: #81b5a1; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
 .sn-logo i { font-size: 20px; }
 .sn-nav { color: #a8c4bb; font-size: 12px; margin-left: auto; display: flex; gap: 20px; }
 .sn-nav span { cursor: pointer; opacity: 0.8; transition: opacity 0.15s; }
 .sn-nav span:hover { opacity: 1; }
-
-/* Sub nav */
 .sn-subnav { background: #f0f0ed; border-bottom: 1px solid #d0cfc8; padding: 7px 20px; display: flex; align-items: center; gap: 8px; }
 .sn-breadcrumb { font-size: 12px; color: #555; }
 .sn-breadcrumb a { color: #1976d2; text-decoration: none; }
@@ -27,84 +23,54 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .sn-btn:hover { background: #f5f5f5; }
 .sn-btn.primary { background: #293e40; color: #fff; border-color: #293e40; }
 .sn-btn.primary:hover { background: #1e2e30; }
-
-/* Form wrap */
-.sn-form-wrap { padding: 20px; max-width: 960px; margin: 0 auto; }
+.sn-form-wrap { padding: 20px; max-width: 1000px; margin: 0 auto; }
 .sn-form-title { font-size: 16px; font-weight: 500; color: #1a1a1a; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
 .badge { font-size: 11px; padding: 3px 10px; border-radius: 12px; background: #e8f5e9; color: #2e7d32; font-weight: 500; }
-
-/* Section */
-.sn-section { background: #fff; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 16px; }
-.sn-section-header { background: #293e40; color: #fff; font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 3px 3px 0 0; letter-spacing: 0.3px; }
-
-/* Grid */
+.mass-update-bar { background: #fff; border: 1px solid #ddd; border-radius: 4px; padding: 8px 14px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.sn-tabs { display: flex; gap: 0; border-bottom: 2px solid #293e40; margin-bottom: 0; }
+.sn-tab { font-size: 12px; font-weight: 500; padding: 8px 18px; cursor: pointer; border: 1px solid transparent; border-bottom: none; border-radius: 4px 4px 0 0; color: #555; background: #f0f0ed; transition: background 0.12s, color 0.12s; margin-right: 3px; }
+.sn-tab:hover { background: #e0e0db; color: #1a1a1a; }
+.sn-tab.active { background: #293e40; color: #fff; border-color: #293e40; }
+.sn-tab-panel { display: none; }
+.sn-tab-panel.active { display: block; }
+.sn-section { background: #fff; border: 1px solid #ddd; border-radius: 0 4px 4px 4px; margin-bottom: 16px; }
+.sn-section-header { background: #293e40; color: #fff; font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 0 3px 0 0; letter-spacing: 0.3px; }
 .sn-grid { display: grid; grid-template-columns: 1fr 1fr; }
-
-/* Field */
 .sn-field { padding: 10px 14px; border-bottom: 1px solid #f0f0ee; display: flex; align-items: flex-start; gap: 0; position: relative; transition: background 0.15s; }
 .sn-field:hover { background: #f7fbff; }
 .sn-field.active { background: #eef6ff; }
 .sn-field:last-child { border-bottom: none; }
 .sn-field.full { grid-column: 1 / -1; }
-
-/* Label */
-.field-label { font-size: 12px; color: #555; width: 170px; min-width: 170px; padding-top: 4px; display: flex; align-items: flex-start; gap: 2px; flex-wrap: nowrap; }
+.field-label { font-size: 12px; color: #555; width: 175px; min-width: 175px; padding-top: 4px; display: flex; align-items: flex-start; gap: 2px; flex-wrap: nowrap; }
 .field-label .req { color: #c62828; font-size: 14px; line-height: 1; margin-left: 1px; }
-
-/* Input area */
 .field-input { flex: 1; min-width: 0; }
-.field-input input[type=text],
-.field-input select {
-  width: 100%; font-size: 13px; padding: 4px 8px;
-  border: 1px solid #ccc; border-radius: 3px;
-  background: #fff; color: #1a1a1a; font-family: inherit; height: 28px;
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-.field-input input[type=text]:focus,
-.field-input select:focus {
-  outline: none; border-color: #1976d2;
-  box-shadow: 0 0 0 2px rgba(25,118,210,0.12);
-}
+.field-input input[type=text], .field-input input[type=datetime-local], .field-input select { width: 100%; font-size: 13px; padding: 4px 8px; border: 1px solid #ccc; border-radius: 3px; background: #fff; color: #1a1a1a; font-family: inherit; height: 28px; transition: border-color 0.15s, box-shadow 0.15s; }
+.field-input textarea { width: 100%; font-size: 13px; padding: 6px 8px; border: 1px solid #ccc; border-radius: 3px; background: #fff; color: #1a1a1a; font-family: inherit; resize: vertical; min-height: 72px; transition: border-color 0.15s, box-shadow 0.15s; }
+.field-input input:focus, .field-input select:focus, .field-input textarea:focus { outline: none; border-color: #1976d2; box-shadow: 0 0 0 2px rgba(25,118,210,0.12); }
 .sn-readonly { font-size: 13px; color: #1a1a1a; padding: 4px 0; line-height: 1.5; }
 .sn-readonly.auto { color: #1565c0; font-weight: 500; }
 .sn-readonly.muted { color: #888; font-style: italic; }
-
-/* State pills */
 .sn-state { display: flex; gap: 6px; flex-wrap: wrap; padding: 2px 0; }
 .sn-state-pill { font-size: 11px; padding: 2px 9px; border-radius: 10px; font-weight: 500; }
 .pill-new { background: #e3f2fd; color: #0d47a1; }
 .pill-dim { background: #f5f5f5; color: #9e9e9e; }
-
-/* Checkbox */
 .checkbox-row { display: flex; align-items: center; gap: 8px; font-size: 13px; }
 .checkbox-row input[type=checkbox] { width: 15px; height: 15px; accent-color: #293e40; cursor: pointer; }
 .checkbox-row label { cursor: pointer; }
 .warn-text { color: #bf360c; font-size: 11px; margin-top: 5px; display: flex; align-items: flex-start; gap: 4px; }
 .warn-text i { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
-
-/* Info icon */
-.info-icon {
-  width: 16px; height: 16px; border-radius: 50%;
-  background: #1976d2; color: #fff; font-size: 10px;
-  display: inline-flex; align-items: center; justify-content: center;
-  cursor: pointer; flex-shrink: 0; margin-top: 3px; margin-left: 5px;
-  font-style: italic; font-family: Georgia, serif; font-weight: bold;
-  transition: background 0.15s; user-select: none;
-}
+.sn-btn-field { font-size: 12px; padding: 4px 12px; border-radius: 3px; cursor: pointer; border: 1px solid #1976d2; background: #e3f2fd; color: #1565c0; font-family: inherit; transition: background 0.12s; }
+.sn-btn-field:hover { background: #bbdefb; }
+.info-icon { width: 16px; height: 16px; border-radius: 50%; background: #1976d2; color: #fff; font-size: 10px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; margin-top: 3px; margin-left: 5px; font-style: italic; font-family: Georgia, serif; font-weight: bold; transition: background 0.15s; user-select: none; }
 .info-icon:hover, .info-icon.open { background: #0d47a1; }
-
-/* Tooltip */
-.tooltip-panel {
-  display: none;
-  position: fixed; z-index: 9999;
-  width: 310px;
-  background: #fff;
-  border: 1px solid #b0c4de;
-  border-radius: 6px;
-  box-shadow: 0 6px 22px rgba(0,0,0,0.14);
-  overflow: hidden;
-  pointer-events: none;
-}
+.mitigation-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.mitigation-table th { background: #293e40; color: #fff; padding: 8px 12px; text-align: left; font-size: 11px; font-weight: 500; letter-spacing: 0.3px; }
+.mitigation-table td { padding: 10px 12px; border-bottom: 1px solid #f0f0ee; vertical-align: top; line-height: 1.5; }
+.mitigation-table tr:last-child td { border-bottom: none; }
+.mitigation-table tr:hover td { background: #f7fbff; }
+.mitigation-table td:first-child { font-weight: 500; color: #293e40; white-space: nowrap; }
+.trigger-tag { display: inline-block; background: #e8f5e9; color: #2e7d32; font-size: 11px; padding: 1px 7px; border-radius: 10px; margin: 2px 2px 2px 0; font-weight: 500; }
+.tooltip-panel { display: none; position: fixed; z-index: 9999; width: 320px; background: #fff; border: 1px solid #b0c4de; border-radius: 6px; box-shadow: 0 6px 22px rgba(0,0,0,0.14); overflow: hidden; pointer-events: none; }
 .tooltip-panel.visible { display: block; }
 .tp-head { background: #293e40; color: #fff; padding: 9px 14px; }
 .tp-head .tp-eyebrow { font-size: 10px; opacity: 0.65; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -115,328 +81,163 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .tp-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: #888; margin-bottom: 4px; }
 .tp-text { font-size: 12px; color: #1a1a1a; line-height: 1.6; }
 .tp-text code { background: #eef3ff; color: #1565c0; padding: 1px 5px; border-radius: 3px; font-size: 11px; font-family: 'Courier New', monospace; }
-
-/* Hint bar */
-.hint-bar {
-  background: #e8f4fd; border: 1px solid #b3d8f5; border-radius: 4px;
-  padding: 8px 14px; margin-bottom: 16px;
-  font-size: 12px; color: #0d47a1; display: flex; align-items: center; gap: 8px;
-}
+.hint-bar { background: #e8f4fd; border: 1px solid #b3d8f5; border-radius: 4px; padding: 8px 14px; margin-bottom: 16px; font-size: 12px; color: #0d47a1; display: flex; align-items: center; gap: 8px; }
 .hint-bar i { font-size: 16px; flex-shrink: 0; }
-
-/* Footer */
 .sn-footer { text-align: center; padding: 20px; font-size: 11px; color: #aaa; }
 </style>
 </head>
 <body>
-
 <div class="sn-shell">
-  <div class="sn-logo"><i class="ti ti-shield-check" aria-hidden="true"></i> ServiceNow</div>
-  <div class="sn-nav">
-    <span>Change</span>
-    <span>CMDB</span>
-    <span>Approvals</span>
-    <span>Reports</span>
-  </div>
+  <div class="sn-logo"><i class="ti ti-shield-check"></i> ServiceNow</div>
+  <div class="sn-nav"><span>Change</span><span>CMDB</span><span>Approvals</span><span>Reports</span></div>
 </div>
-
 <div class="sn-subnav">
-  <div class="sn-breadcrumb">
-    <a href="#">Change</a> › <a href="#">All Changes</a> › New Record
-  </div>
-  <div class="sn-actions">
-    <button class="sn-btn">Save</button>
-    <button class="sn-btn">Update</button>
-    <button class="sn-btn primary">Submit</button>
-  </div>
+  <div class="sn-breadcrumb"><a href="#">Change</a> › <a href="#">All Changes</a> › New Record</div>
+  <div class="sn-actions"><button class="sn-btn">Save</button><button class="sn-btn">Update</button><button class="sn-btn primary">Submit</button></div>
 </div>
-
 <div class="sn-form-wrap">
-
-  <div class="hint-bar">
-    <i class="ti ti-info-circle" aria-hidden="true"></i>
-    Hover the <strong>&nbsp;i&nbsp;</strong> icon next to any field, or click into an input, to see guidance on what the field means and how to fill it.
+  <div class="hint-bar"><i class="ti ti-info-circle"></i> Hover the <strong>&nbsp;i&nbsp;</strong> icon next to any field, or click into an input, to see guidance on what the field means and how to fill it.</div>
+  <div class="sn-form-title">Change Request — New <span class="badge">Draft</span></div>
+  <div class="mass-update-bar" data-field="mass_update">
+    <input type="checkbox" id="mass_update_cb" style="width:15px;height:15px;accent-color:#293e40;cursor:pointer;" />
+    <label for="mass_update_cb" style="cursor:pointer;">Mass update CI class</label>
+    <span class="info-icon" data-tip="mass_update" style="margin-top:0;">i</span>
+  </div>
+  <div class="sn-tabs">
+    <div class="sn-tab active" data-tab="change-info">Change Information</div>
+    <div class="sn-tab" data-tab="schedule">Schedule</div>
+    <div class="sn-tab" data-tab="planning">Planning</div>
+    <div class="sn-tab" data-tab="risk">Risk &amp; Mitigation</div>
   </div>
 
-  <div class="sn-form-title">
-    Change Request — New
-    <span class="badge">Draft</span>
-  </div>
-
-  <div class="sn-section">
-    <div class="sn-section-header">Change Information</div>
-    <div class="sn-grid">
-
-      <!-- Number -->
-      <div class="sn-field" data-field="number">
-        <div class="field-label">Number <span class="info-icon" data-tip="number">i</span></div>
-        <div class="field-input"><div class="sn-readonly auto">CHG0012847</div></div>
+  <div class="sn-tab-panel active" id="tab-change-info">
+    <div class="sn-section">
+      <div class="sn-section-header">Change Information</div>
+      <div class="sn-grid">
+        <div class="sn-field" data-field="number"><div class="field-label">Number <span class="info-icon" data-tip="number">i</span></div><div class="field-input"><div class="sn-readonly auto">CHG0012847</div></div></div>
+        <div class="sn-field" data-field="requested_by"><div class="field-label">Requested by <span class="req">*</span><span class="info-icon" data-tip="requested_by">i</span></div><div class="field-input"><input type="text" value="Abhay Jadhav" /></div></div>
+        <div class="sn-field" data-field="category"><div class="field-label">Category <span class="req">*</span><span class="info-icon" data-tip="category">i</span></div><div class="field-input"><select><option value="">-- Select --</option><option>Application</option><option>Infrastructure</option><option>Hardware</option><option>Network</option><option>Database</option></select></div></div>
+        <div class="sn-field" data-field="type"><div class="field-label">Type <span class="req">*</span><span class="info-icon" data-tip="type">i</span></div><div class="field-input"><select><option value="">-- Select --</option><option>Normal</option><option>Emergency</option></select></div></div>
+        <div class="sn-field" data-field="state"><div class="field-label">State <span class="info-icon" data-tip="state">i</span></div><div class="field-input"><div class="sn-state"><span class="sn-state-pill pill-new">New</span><span class="sn-state-pill pill-dim">Assess</span><span class="sn-state-pill pill-dim">Authorize</span><span class="sn-state-pill pill-dim">Scheduled</span><span class="sn-state-pill pill-dim">Implement</span><span class="sn-state-pill pill-dim">Review</span><span class="sn-state-pill pill-dim">Closed</span><span class="sn-state-pill pill-dim">Cancelled</span></div></div></div>
+        <div class="sn-field" data-field="template"><div class="field-label">Normal Change Template <span class="info-icon" data-tip="template">i</span></div><div class="field-input"><select><option value="">-- Blank --</option><option>Standard Patch</option><option>App Deployment</option><option>Config Change</option></select></div></div>
+        <div class="sn-field" data-field="reason"><div class="field-label">Reason <span class="req">*</span><span class="info-icon" data-tip="reason">i</span></div><div class="field-input"><select><option value="">-- Select --</option><option>Enhancement</option><option>DR</option><option>Retirement</option><option>Upgrade</option><option>Incident Fix</option><option>Regulatory</option></select></div></div>
+        <div class="sn-field" data-field="service_offering"><div class="field-label">Service Offering <span class="req">*</span><span class="info-icon" data-tip="service_offering">i</span></div><div class="field-input"><input type="text" placeholder="Search application…" /></div></div>
+        <div class="sn-field" data-field="ci"><div class="field-label">Configuration Item <span class="req">*</span><span class="info-icon" data-tip="ci">i</span></div><div class="field-input"><input type="text" placeholder="Search CMDB…" /></div></div>
+        <div class="sn-field" data-field="gxp"><div class="field-label">GxP Risk Level <span class="info-icon" data-tip="gxp">i</span></div><div class="field-input"><div class="sn-readonly muted">GxP High — auto-populated from APM</div></div></div>
+        <div class="sn-field full" data-field="sox"><div class="field-label">SOX <span class="info-icon" data-tip="sox">i</span></div><div class="field-input"><div class="checkbox-row"><input type="checkbox" id="sox_cb" /><label for="sox_cb">This change impacts SOX controls</label></div><div class="warn-text"><i class="ti ti-alert-triangle"></i> If checked, work notes are required before submission.</div></div></div>
+        <div class="sn-field full" data-field="gxp_process"><div class="field-label">GxP Process Impacted <span class="info-icon" data-tip="gxp_process">i</span></div><div class="field-input"><div class="checkbox-row"><input type="checkbox" id="gxp_process_cb" checked /><label for="gxp_process_cb">This change impacts a GxP process</label></div><div class="warn-text"><i class="ti ti-alert-triangle"></i> Work notes are required when unchecking this box.</div></div></div>
+        <div class="sn-field" data-field="risk"><div class="field-label">Risk <span class="info-icon" data-tip="risk">i</span></div><div class="field-input"><div class="sn-readonly muted">Auto-populated based on field inputs</div></div></div>
+        <div class="sn-field" data-field="priority"><div class="field-label">Priority <span class="info-icon" data-tip="priority">i</span></div><div class="field-input"><div class="sn-readonly muted">Calculated from Impact × Urgency</div></div></div>
+        <div class="sn-field" data-field="impact"><div class="field-label">Impact <span class="req">*</span><span class="info-icon" data-tip="impact">i</span></div><div class="field-input"><select><option value="">-- Select --</option><option>1 - High</option><option>2 - Medium</option><option>3 - Low</option></select></div></div>
+        <div class="sn-field" data-field="assignment_group"><div class="field-label">Assignment Group <span class="req">*</span><span class="info-icon" data-tip="assignment_group">i</span></div><div class="field-input"><input type="text" placeholder="Search group…" /></div></div>
+        <div class="sn-field" data-field="parent"><div class="field-label">Parent <span class="info-icon" data-tip="parent">i</span></div><div class="field-input"><input type="text" placeholder="e.g. INC0012345" /></div></div>
+        <div class="sn-field" data-field="project_number"><div class="field-label">Project Number <span class="info-icon" data-tip="project_number">i</span></div><div class="field-input"><input type="text" placeholder="e.g. PRJ-2024-001" /></div></div>
+        <div class="sn-field" data-field="change_coordinator"><div class="field-label">Change Coordinator <span class="req">*</span><span class="info-icon" data-tip="change_coordinator">i</span></div><div class="field-input"><input type="text" placeholder="Search user…" /></div></div>
+        <div class="sn-field full" data-field="short_description"><div class="field-label">Short Description <span class="req">*</span><span class="info-icon" data-tip="short_description">i</span></div><div class="field-input"><input type="text" placeholder="One-line summary (max 120 chars)…" maxlength="120" /></div></div>
+        <div class="sn-field full" data-field="description"><div class="field-label">Description <span class="req">*</span><span class="info-icon" data-tip="description">i</span></div><div class="field-input"><textarea placeholder="Cover: current state, target state, business driver, scope (in/out), and dependencies…"></textarea></div></div>
+        <div class="sn-field full" data-field="justification"><div class="field-label">Justification <span class="req">*</span><span class="info-icon" data-tip="justification">i</span></div><div class="field-input"><textarea placeholder="Link to incident, problem, project, or compliance/audit driver. Quantify benefit where possible…"></textarea></div></div>
       </div>
-
-      <!-- Requested by -->
-      <div class="sn-field" data-field="requested_by">
-        <div class="field-label">Requested by <span class="req">*</span><span class="info-icon" data-tip="requested_by">i</span></div>
-        <div class="field-input"><input type="text" value="Abhay Jadhav" /></div>
-      </div>
-
-      <!-- Category -->
-      <div class="sn-field" data-field="category">
-        <div class="field-label">Category <span class="req">*</span><span class="info-icon" data-tip="category">i</span></div>
-        <div class="field-input">
-          <select>
-            <option value="">-- Select --</option>
-            <option>Application</option>
-            <option>Infrastructure</option>
-            <option>Hardware</option>
-            <option>Network</option>
-            <option>Database</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Type -->
-      <div class="sn-field" data-field="type">
-        <div class="field-label">Type <span class="req">*</span><span class="info-icon" data-tip="type">i</span></div>
-        <div class="field-input">
-          <select>
-            <option value="">-- Select --</option>
-            <option>Normal</option>
-            <option>Emergency</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- State -->
-      <div class="sn-field" data-field="state">
-        <div class="field-label">State <span class="info-icon" data-tip="state">i</span></div>
-        <div class="field-input">
-          <div class="sn-state">
-            <span class="sn-state-pill pill-new">New</span>
-            <span class="sn-state-pill pill-dim">Assess</span>
-            <span class="sn-state-pill pill-dim">Authorize</span>
-            <span class="sn-state-pill pill-dim">Scheduled</span>
-            <span class="sn-state-pill pill-dim">Implement</span>
-            <span class="sn-state-pill pill-dim">Closed</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Normal Change Template -->
-      <div class="sn-field" data-field="template">
-        <div class="field-label">Normal Change Template <span class="info-icon" data-tip="template">i</span></div>
-        <div class="field-input">
-          <select>
-            <option value="">-- Blank --</option>
-            <option>Standard Patch</option>
-            <option>App Deployment</option>
-            <option>Config Change</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Reason -->
-      <div class="sn-field" data-field="reason">
-        <div class="field-label">Reason <span class="req">*</span><span class="info-icon" data-tip="reason">i</span></div>
-        <div class="field-input">
-          <select>
-            <option value="">-- Select --</option>
-            <option>Enhancement</option>
-            <option>DR</option>
-            <option>Retirement</option>
-            <option>Upgrade</option>
-            <option>Incident Fix</option>
-            <option>Regulatory</option>
-          </select>
-        </div>
-      </div>
-
-      <!-- Service Offering -->
-      <div class="sn-field" data-field="service_offering">
-        <div class="field-label">Service Offering <span class="req">*</span><span class="info-icon" data-tip="service_offering">i</span></div>
-        <div class="field-input"><input type="text" placeholder="Search application…" /></div>
-      </div>
-
-      <!-- CI -->
-      <div class="sn-field" data-field="ci">
-        <div class="field-label">Configuration Item <span class="req">*</span><span class="info-icon" data-tip="ci">i</span></div>
-        <div class="field-input"><input type="text" placeholder="Search CMDB…" /></div>
-      </div>
-
-      <!-- GxP -->
-      <div class="sn-field" data-field="gxp">
-        <div class="field-label">GxP Risk Level <span class="info-icon" data-tip="gxp">i</span></div>
-        <div class="field-input"><div class="sn-readonly muted">GxP High — auto-populated from APM</div></div>
-      </div>
-
-      <!-- SOX -->
-      <div class="sn-field full" data-field="sox">
-        <div class="field-label">SOX <span class="info-icon" data-tip="sox">i</span></div>
-        <div class="field-input">
-          <div class="checkbox-row">
-            <input type="checkbox" id="sox_cb" />
-            <label for="sox_cb">This change impacts SOX controls</label>
-          </div>
-          <div class="warn-text">
-            <i class="ti ti-alert-triangle" aria-hidden="true"></i>
-            If checked, work notes are required before submission.
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 
-</div><!-- /form-wrap -->
+  <div class="sn-tab-panel" id="tab-schedule">
+    <div class="sn-section">
+      <div class="sn-section-header">Schedule</div>
+      <div class="sn-grid">
+        <div class="sn-field" data-field="requested_by_date"><div class="field-label">Requested by Date <span class="req">*</span><span class="info-icon" data-tip="requested_by_date">i</span></div><div class="field-input"><input type="datetime-local" /></div></div>
+        <div class="sn-field" data-field="planned_start"><div class="field-label">Planned Implement Start <span class="req">*</span><span class="info-icon" data-tip="planned_start">i</span></div><div class="field-input"><input type="datetime-local" /></div></div>
+        <div class="sn-field" data-field="planned_end"><div class="field-label">Planned Implement End <span class="req">*</span><span class="info-icon" data-tip="planned_end">i</span></div><div class="field-input"><input type="datetime-local" /></div></div>
+        <div class="sn-field" data-field="cab_required"><div class="field-label">CAB Required <span class="info-icon" data-tip="cab_required">i</span></div><div class="field-input"><div class="checkbox-row"><input type="checkbox" id="cab_required_cb" /><label for="cab_required_cb">Change must go through CAB review</label></div></div></div>
+        <div class="sn-field" data-field="cab_date"><div class="field-label">CAB Date / Time <span class="info-icon" data-tip="cab_date">i</span></div><div class="field-input"><input type="datetime-local" /></div></div>
+        <div class="sn-field" data-field="cab_delegate"><div class="field-label">CAB Delegate <span class="info-icon" data-tip="cab_delegate">i</span></div><div class="field-input"><input type="text" placeholder="Name of presenter at CAB…" /></div></div>
+        <div class="sn-field" data-field="cab_recommendation"><div class="field-label">CAB Recommendation <span class="info-icon" data-tip="cab_recommendation">i</span></div><div class="field-input"><select disabled><option value="">— Populated by Change Manager —</option><option>Approved</option><option>Approved with conditions</option><option>Deferred</option><option>Rejected</option></select></div></div>
+        <div class="sn-field" data-field="conflict_calendar"><div class="field-label">Conflict Calendar <span class="info-icon" data-tip="conflict_calendar">i</span></div><div class="field-input"><button class="sn-btn-field"><i class="ti ti-calendar-search"></i> Check Conflicts</button><div style="font-size:11px;color:#555;margin-top:5px;">Click to verify no frozen period or high-risk clash. Attach screenshot of result.</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sn-tab-panel" id="tab-planning">
+    <div class="sn-section">
+      <div class="sn-section-header">Planning — Phases</div>
+      <div class="sn-grid">
+        <div class="sn-field" data-field="test_phase_start"><div class="field-label">Test Phase — Start Date <span class="req">*</span><span class="info-icon" data-tip="test_phase_start">i</span></div><div class="field-input"><input type="datetime-local" /></div></div>
+        <div class="sn-field" data-field="deploy_phase_start"><div class="field-label">Deploy Phase — Start Date <span class="req">*</span><span class="info-icon" data-tip="deploy_phase_start">i</span></div><div class="field-input"><input type="datetime-local" /></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sn-tab-panel" id="tab-risk">
+    <div class="sn-section">
+      <div class="sn-section-header">Risk &amp; Mitigation</div>
+      <table class="mitigation-table">
+        <thead><tr><th style="width:18%">Dimension</th><th style="width:38%">What it covers</th><th style="width:44%">Triggered when…</th></tr></thead>
+        <tbody>
+          <tr><td>Testing Strategies</td><td>Developing tailored testing plans that cover the specific risks identified — not just the default regression pack. Includes positive, negative, and edge-case tests.</td><td><span class="trigger-tag">Any code/config change</span><span class="trigger-tag">Data accuracy = Yes</span><span class="trigger-tag">Data integrity = Yes</span><span class="trigger-tag">Regression test = Yes</span></td></tr>
+          <tr><td>SME Consultation</td><td>Engaging subject-matter experts for insight on areas where the implementer is not the deepest expert. Documents who was consulted and what they advised.</td><td><span class="trigger-tag">Complex/unfamiliar change</span><span class="trigger-tag">Security = Yes</span><span class="trigger-tag">Audit trail = Yes</span><span class="trigger-tag">Cross-module impact</span></td></tr>
+          <tr><td>Cutover Plans</td><td>Creating detailed implementation plans for the cutover window: job scheduling, data migration, downtime, role/auth assignments, sequencing of dependent steps.</td><td><span class="trigger-tag">Scheduling jobs</span><span class="trigger-tag">Migrating data</span><span class="trigger-tag">Downtime = Yes</span><span class="trigger-tag">Role assignments change</span></td></tr>
+          <tr><td>Timely Notification</td><td>Ensuring prompt communication to impacted users, business owners, and dependent teams before, during, and after the change.</td><td><span class="trigger-tag">Downtime = Yes</span><span class="trigger-tag">User-facing change</span><span class="trigger-tag">Cross-region impact</span></td></tr>
+          <tr><td>User Training</td><td>Educating users on new functionality, changed screens, or new procedures. Includes training material, delivery channel, and completion tracking.</td><td><span class="trigger-tag">New functionality</span><span class="trigger-tag">Training requirements = Yes</span><span class="trigger-tag">User-facing UI change</span></td></tr>
+          <tr><td>Record Updates</td><td>Updating CMDB, validation records, controlled documents (SOPs, specs, QualiPSO), and the application inventory to reflect the change accurately.</td><td><span class="trigger-tag">CMDB update needed = Yes</span><span class="trigger-tag">QualiPSO doc impacted</span><span class="trigger-tag">DDIC change = Yes</span></td></tr>
+          <tr><td>Knowledge Transfer</td><td>Sharing knowledge among stakeholders so the change does not create a single point of failure: handover notes, runbook updates, support team briefing.</td><td><span class="trigger-tag">Any non-trivial change</span><span class="trigger-tag">New component introduced</span><span class="trigger-tag">Support team not previously exposed</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 <div class="sn-footer">Interactive demo · Hover <strong>i</strong> icons or click inputs for field guidance</div>
 
-<!-- Tooltip panel -->
 <div class="tooltip-panel" id="tipPanel" role="tooltip" aria-live="polite">
-  <div class="tp-head">
-    <div class="tp-eyebrow">Field guidance</div>
-    <div class="tp-title" id="tipTitle"></div>
-  </div>
-  <div class="tp-body">
-    <div class="tp-section">
-      <div class="tp-label">What it is</div>
-      <div class="tp-text" id="tipWhat"></div>
-    </div>
-    <div class="tp-section">
-      <div class="tp-label">How to fill</div>
-      <div class="tp-text" id="tipHow"></div>
-    </div>
-  </div>
+  <div class="tp-head"><div class="tp-eyebrow">Field guidance</div><div class="tp-title" id="tipTitle"></div></div>
+  <div class="tp-body"><div class="tp-section"><div class="tp-label">What it is</div><div class="tp-text" id="tipWhat"></div></div><div class="tp-section"><div class="tp-label">How to fill</div><div class="tp-text" id="tipHow"></div></div></div>
 </div>
 
 <script>
 const tips = {
-  number: {
-    label: "Number",
-    what: "Auto-generated unique identifier for the change request (e.g., <code>CHGxxxxxxx</code>).",
-    how: "System-generated. Do not edit. Reference this number in all related communications, approvals, and tickets."
-  },
-  requested_by: {
-    label: "Requested by",
-    what: "Person who is formally requesting the change.",
-    how: "Defaults to the logged-in user. Update only if you are raising on someone else's behalf. Must be an active AD user."
-  },
-  category: {
-    label: "Category",
-    what: "Broad classification of the change (e.g., Hardware, Software, Network, Database, Application).",
-    how: "Select from dropdown: <code>Infrastructure</code> for platform/infra changes, <code>Application</code> for software/app changes."
-  },
-  type: {
-    label: "Type",
-    what: "Defines the approval workflow — <code>Normal</code> or <code>Emergency</code>.",
-    how: "<code>Normal</code> follows standard CAB approval. <code>Emergency</code> triggers expedited review — use only when justified and time-critical."
-  },
-  state: {
-    label: "State",
-    what: "Lifecycle stage of the change: New → Assess → Authorize → Scheduled → Implement → Review → Closed → Cancelled.",
-    how: "Updated automatically as approvals progress. Move forward manually only when entry/exit criteria for that state are met."
-  },
-  template: {
-    label: "Normal Change Template",
-    what: "Pre-approved change model applicable to the application.",
-    how: "Select the change model applicable to your application. If no change model is available, keep it blank."
-  },
-  reason: {
-    label: "Reason",
-    what: "Business reason driving this change.",
-    how: "Select from dropdown: <code>Enhancement</code>, <code>DR</code>, <code>Retirement</code>, <code>Upgrade</code>, etc. Choose the option that most accurately reflects the driver."
-  },
-  service_offering: {
-    label: "Service Offering",
-    what: "Business application the CI supports.",
-    how: "Select the application related to the change. Example: <code>iShift</code>."
-  },
-  ci: {
-    label: "Configuration Item",
-    what: "The specific asset, application, or service being changed.",
-    how: "Search the CMDB by CI name. Always pick the lowest-level CI that accurately represents the change. If the CI is missing, raise a CMDB update request before proceeding."
-  },
-  gxp: {
-    label: "GxP Risk Level",
-    what: "Non-editable field based on APM GxP Risk Classification.",
-    how: "Read-only — auto-populated from APM. No manual entry required or permitted."
-  },
-  sox: {
-    label: "SOX",
-    what: "Indicates whether this change impacts SOX controls.",
-    how: "Check this box if the change impacts SOX controls, else uncheck it. Work notes are required if this is checked."
-  }
+  number:{label:"Number",what:"Auto-generated unique identifier for the change request (e.g., <code>CHGxxxxxxx</code>).",how:"System-generated. Do not edit. Reference this number in all related communications, approvals, and tickets."},
+  requested_by:{label:"Requested by",what:"Person who is formally requesting the change.",how:"Defaults to the logged-in user. Update only if you are raising on someone else's behalf. Must be an active AD user."},
+  category:{label:"Category",what:"Broad classification of the change (e.g., Hardware, Software, Network, Database, Application).",how:"Select from dropdown: <code>Infrastructure</code> for platform/infra changes, <code>Application</code> for software/app changes."},
+  type:{label:"Type",what:"Normal, or Emergency. Drives the approval workflow.",how:"<code>Normal</code> follows standard CAB approval. <code>Emergency</code> triggers expedited review — use only when justified and time-critical."},
+  state:{label:"State",what:"Lifecycle stage: New → Assess → Authorize → Scheduled → Implement → Review → Closed → Cancelled.",how:"Updated automatically as approvals progress. Manually move forward only when entry/exit criteria for that state are met."},
+  template:{label:"Normal Change Template",what:"Pre-approved change model applicable to the application.",how:"Select the change model applicable to your application. If no change model is available, keep it blank."},
+  reason:{label:"Reason",what:"Reason for the change.",how:"Select from dropdown: Enhancement, DR, Retirement, Upgrade, etc."},
+  service_offering:{label:"Service Offering",what:"Business application the CI supports.",how:"Select the application related to the change. Example: <code>iShift</code>."},
+  ci:{label:"Configuration Item",what:"The specific asset, application, or service being changed.",how:"Search the CMDB by CI name. Always pick the lowest-level CI that accurately represents the change. If the CI is missing, raise a CMDB update request before proceeding."},
+  gxp:{label:"GxP Risk Level",what:"Non-editable field based on APM GxP Risk Classification.",how:"Read-only — auto-populated from APM. No manual entry required or permitted."},
+  sox:{label:"SOX",what:"Indicates whether this change impacts SOX controls.",how:"Check this checkbox if the change is impacting SOX controls, else uncheck it. Work notes are required."},
+  gxp_process:{label:"GxP Process Impacted",what:"Checkbox — auto-selected for GxP applications.",how:"If the change impacts any GxP process, keep checked. Uncheck only if no GxP process impact. Work notes required when unchecking."},
+  risk:{label:"Risk",what:"Likelihood and consequence of failure (Low / Moderate / High / Very High).",how:"Auto-populated based on other field inputs. No manual entry required."},
+  priority:{label:"Priority",what:"Derived from Impact × Urgency. Drives SLA for review and scheduling.",how:"Set Impact and Urgency; Priority calculates automatically. Do not override unless directed by the Change Manager."},
+  impact:{label:"Impact",what:"Scope of business effect if the change is implemented (or fails).",how:"<code>1 - High</code>: enterprise-wide. <code>2 - Medium</code>: single BU or region. <code>3 - Low</code>: team or single user."},
+  assignment_group:{label:"Assignment Group",what:"Team responsible for implementing the change.",how:"Pick the support group that owns the CI. Confirm the group has the right approvers configured before submitting."},
+  parent:{label:"Parent",what:"Reference from which this change is initiated.",how:"Add the reference number. Example: Incident Number."},
+  project_number:{label:"Project Number",what:"Reference to a project from which this change is initiated.",how:"Add the project reference number. Example: <code>PRJ-2024-001</code>."},
+  change_coordinator:{label:"Change Coordinator",what:"Change Coordinator accountable for execution.",how:"Must be a member of the Assignment Group. Should be the person who will actually run the change window."},
+  short_description:{label:"Short Description",what:"One-line summary of the change. Appears in CAB agendas and notifications.",how:"Keep under 120 characters. No acronyms unless industry-standard."},
+  description:{label:"Description",what:"Detailed explanation of what is being changed and why.",how:"Cover: current state, target state, business driver, scope (in/out), and dependencies. Use plain language."},
+  justification:{label:"Justification",what:"Business reason the change is needed now.",how:"Link to an incident, problem, project, or compliance/audit driver. Quantify benefit where possible."},
+  mass_update:{label:"Mass Update CI Class",what:"Checkbox above the tab strip.",how:"Tick only when the change applies to many CIs of the same class in bulk. Leave blank for single-CI changes."},
+  requested_by_date:{label:"Requested by Date",what:"Date by which the requester needs the change completed.",how:"Use a realistic business-driven date. Format: <code>YYYY-MM-DD HH:MM:SS</code>."},
+  planned_start:{label:"Planned Implement Start Date",what:"Exact start of the implementation window.",how:"Align with the Deploy Phase start date on the Planning tab."},
+  planned_end:{label:"Planned Implement End Date",what:"Exact end of the implementation window.",how:"Must include time for validation and contingency for backout."},
+  cab_required:{label:"CAB Required",what:"Indicates whether this change must go through CAB review.",how:"Tick if the change must go through CAB review."},
+  cab_date:{label:"CAB Date / Time",what:"Scheduled CAB meeting slot when this CR will be reviewed.",how:"Pick from the CAB calendar."},
+  cab_delegate:{label:"CAB Delegate",what:"Named person who will present the change at CAB.",how:"Must be available at the scheduled CAB date/time."},
+  cab_recommendation:{label:"CAB Recommendation",what:"Populated by the Change Manager after the CAB meeting.",how:"Read-only. Options: Approved, Approved with conditions, Deferred, Rejected."},
+  conflict_calendar:{label:"Conflict Calendar",what:"Checks whether the planned window clashes with frozen periods or high-risk changes.",how:"Click before submitting. Screenshot the result and attach it to the change record."},
+  test_phase_start:{label:"Test Phase — Start Date",what:"Date testing in SIT/UAT begins.",how:"Must precede the Deploy Phase start date. Format: <code>YYYY-MM-DD</code>."},
+  deploy_phase_start:{label:"Deploy Phase — Start Date",what:"Date the change is deployed to PROD.",how:"Must be after Test Phase completion. Format: <code>YYYY-MM-DD</code>."}
 };
-
-const panel = document.getElementById('tipPanel');
-const tipTitle = document.getElementById('tipTitle');
-const tipWhat = document.getElementById('tipWhat');
-const tipHow = document.getElementById('tipHow');
-let currentAnchor = null;
-
-function showTip(key, anchor) {
-  const d = tips[key];
-  if (!d) return;
-  tipTitle.textContent = d.label;
-  tipWhat.innerHTML = d.what;
-  tipHow.innerHTML = d.how;
-  panel.classList.add('visible');
-  currentAnchor = anchor;
-  positionTip(anchor);
-}
-
-function hideTip() {
-  panel.classList.remove('visible');
-  currentAnchor = null;
-}
-
-function positionTip(anchor) {
-  const rect = anchor.getBoundingClientRect();
-  const pw = 310, ph = 200;
-  let left = rect.right + 10;
-  let top = rect.top - 24;
-  if (left + pw > window.innerWidth - 12) left = rect.left - pw - 10;
-  if (left < 8) left = 8;
-  if (top + ph > window.innerHeight - 12) top = window.innerHeight - ph - 12;
-  if (top < 8) top = 8;
-  panel.style.left = left + 'px';
-  panel.style.top = top + 'px';
-}
-
-// Info icon hover
-document.querySelectorAll('.info-icon').forEach(icon => {
-  icon.addEventListener('mouseenter', () => {
-    showTip(icon.dataset.tip, icon);
-    icon.classList.add('open');
-  });
-  icon.addEventListener('mouseleave', () => {
-    hideTip();
-    icon.classList.remove('open');
-  });
-});
-
-// Input focus
-document.querySelectorAll('.sn-field input[type=text], .sn-field select').forEach(input => {
-  const field = input.closest('.sn-field');
-  const key = field ? field.dataset.field : null;
-  if (!key) return;
-  input.addEventListener('focus', () => {
-    field.classList.add('active');
-    const icon = field.querySelector('.info-icon');
-    if (icon) showTip(key, icon);
-  });
-  input.addEventListener('blur', () => {
-    field.classList.remove('active');
-    hideTip();
-  });
-});
-
-// Reposition on scroll/resize
-window.addEventListener('scroll', () => {
-  if (currentAnchor) positionTip(currentAnchor);
-}, { passive: true });
-window.addEventListener('resize', () => {
-  if (currentAnchor) positionTip(currentAnchor);
-});
+const panel=document.getElementById('tipPanel'),tipTitle=document.getElementById('tipTitle'),tipWhat=document.getElementById('tipWhat'),tipHow=document.getElementById('tipHow');
+let currentAnchor=null;
+function showTip(key,anchor){const d=tips[key];if(!d)return;tipTitle.textContent=d.label;tipWhat.innerHTML=d.what;tipHow.innerHTML=d.how;panel.classList.add('visible');currentAnchor=anchor;positionTip(anchor);}
+function hideTip(){panel.classList.remove('visible');currentAnchor=null;}
+function positionTip(anchor){const rect=anchor.getBoundingClientRect();const pw=320,ph=210;let left=rect.right+10,top=rect.top-24;if(left+pw>window.innerWidth-12)left=rect.left-pw-10;if(left<8)left=8;if(top+ph>window.innerHeight-12)top=window.innerHeight-ph-12;if(top<8)top=8;panel.style.left=left+'px';panel.style.top=top+'px';}
+document.querySelectorAll('.info-icon').forEach(icon=>{icon.addEventListener('mouseenter',()=>{showTip(icon.dataset.tip,icon);icon.classList.add('open');});icon.addEventListener('mouseleave',()=>{hideTip();icon.classList.remove('open');});});
+document.querySelectorAll('.sn-field input,.sn-field select,.sn-field textarea').forEach(input=>{const field=input.closest('.sn-field');const key=field?field.dataset.field:null;if(!key)return;input.addEventListener('focus',()=>{field.classList.add('active');const icon=field.querySelector('.info-icon');if(icon)showTip(key,icon);});input.addEventListener('blur',()=>{field.classList.remove('active');hideTip();});});
+document.querySelectorAll('.sn-tab').forEach(tab=>{tab.addEventListener('click',()=>{document.querySelectorAll('.sn-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.sn-tab-panel').forEach(p=>p.classList.remove('active'));tab.classList.add('active');const target=document.getElementById('tab-'+tab.dataset.tab);if(target)target.classList.add('active');hideTip();});});
+window.addEventListener('scroll',()=>{if(currentAnchor)positionTip(currentAnchor);},{passive:true});
+window.addEventListener('resize',()=>{if(currentAnchor)positionTip(currentAnchor);});
 </script>
 </body>
 </html>

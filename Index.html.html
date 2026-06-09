@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ServiceNow — Change Request Demo</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.19.0/dist/tabler-icons.min.css" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f2; font-size: 14px; }
+
+/* Shell */
+.sn-shell { background: #293e40; height: 48px; display: flex; align-items: center; padding: 0 20px; gap: 16px; }
+.sn-logo { color: #81b5a1; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; display: flex; align-items: center; gap: 8px; }
+.sn-logo i { font-size: 20px; }
+.sn-nav { color: #a8c4bb; font-size: 12px; margin-left: auto; display: flex; gap: 20px; }
+.sn-nav span { cursor: pointer; opacity: 0.8; transition: opacity 0.15s; }
+.sn-nav span:hover { opacity: 1; }
+
+/* Sub nav */
+.sn-subnav { background: #f0f0ed; border-bottom: 1px solid #d0cfc8; padding: 7px 20px; display: flex; align-items: center; gap: 8px; }
+.sn-breadcrumb { font-size: 12px; color: #555; }
+.sn-breadcrumb a { color: #1976d2; text-decoration: none; }
+.sn-breadcrumb a:hover { text-decoration: underline; }
+.sn-actions { margin-left: auto; display: flex; gap: 8px; }
+.sn-btn { font-size: 12px; padding: 5px 14px; border-radius: 3px; cursor: pointer; border: 1px solid #ccc; background: #fff; color: #333; font-family: inherit; transition: background 0.12s; }
+.sn-btn:hover { background: #f5f5f5; }
+.sn-btn.primary { background: #293e40; color: #fff; border-color: #293e40; }
+.sn-btn.primary:hover { background: #1e2e30; }
+
+/* Form wrap */
+.sn-form-wrap { padding: 20px; max-width: 960px; margin: 0 auto; }
+.sn-form-title { font-size: 16px; font-weight: 500; color: #1a1a1a; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+.badge { font-size: 11px; padding: 3px 10px; border-radius: 12px; background: #e8f5e9; color: #2e7d32; font-weight: 500; }
+
+/* Section */
+.sn-section { background: #fff; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 16px; }
+.sn-section-header { background: #293e40; color: #fff; font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 3px 3px 0 0; letter-spacing: 0.3px; }
+
+/* Grid */
+.sn-grid { display: grid; grid-template-columns: 1fr 1fr; }
+
+/* Field */
+.sn-field { padding: 10px 14px; border-bottom: 1px solid #f0f0ee; display: flex; align-items: flex-start; gap: 0; position: relative; transition: background 0.15s; }
+.sn-field:hover { background: #f7fbff; }
+.sn-field.active { background: #eef6ff; }
+.sn-field:last-child { border-bottom: none; }
+.sn-field.full { grid-column: 1 / -1; }
+
+/* Label */
+.field-label { font-size: 12px; color: #555; width: 170px; min-width: 170px; padding-top: 4px; display: flex; align-items: flex-start; gap: 2px; flex-wrap: nowrap; }
+.field-label .req { color: #c62828; font-size: 14px; line-height: 1; margin-left: 1px; }
+
+/* Input area */
+.field-input { flex: 1; min-width: 0; }
+.field-input input[type=text],
+.field-input select {
+  width: 100%; font-size: 13px; padding: 4px 8px;
+  border: 1px solid #ccc; border-radius: 3px;
+  background: #fff; color: #1a1a1a; font-family: inherit; height: 28px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.field-input input[type=text]:focus,
+.field-input select:focus {
+  outline: none; border-color: #1976d2;
+  box-shadow: 0 0 0 2px rgba(25,118,210,0.12);
+}
+.sn-readonly { font-size: 13px; color: #1a1a1a; padding: 4px 0; line-height: 1.5; }
+.sn-readonly.auto { color: #1565c0; font-weight: 500; }
+.sn-readonly.muted { color: #888; font-style: italic; }
+
+/* State pills */
+.sn-state { display: flex; gap: 6px; flex-wrap: wrap; padding: 2px 0; }
+.sn-state-pill { font-size: 11px; padding: 2px 9px; border-radius: 10px; font-weight: 500; }
+.pill-new { background: #e3f2fd; color: #0d47a1; }
+.pill-dim { background: #f5f5f5; color: #9e9e9e; }
+
+/* Checkbox */
+.checkbox-row { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.checkbox-row input[type=checkbox] { width: 15px; height: 15px; accent-color: #293e40; cursor: pointer; }
+.checkbox-row label { cursor: pointer; }
+.warn-text { color: #bf360c; font-size: 11px; margin-top: 5px; display: flex; align-items: flex-start; gap: 4px; }
+.warn-text i { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+
+/* Info icon */
+.info-icon {
+  width: 16px; height: 16px; border-radius: 50%;
+  background: #1976d2; color: #fff; font-size: 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+  cursor: pointer; flex-shrink: 0; margin-top: 3px; margin-left: 5px;
+  font-style: italic; font-family: Georgia, serif; font-weight: bold;
+  transition: background 0.15s; user-select: none;
+}
+.info-icon:hover, .info-icon.open { background: #0d47a1; }
+
+/* Tooltip */
+.tooltip-panel {
+  display: none;
+  position: fixed; z-index: 9999;
+  width: 310px;
+  background: #fff;
+  border: 1px solid #b0c4de;
+  border-radius: 6px;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.14);
+  overflow: hidden;
+  pointer-events: none;
+}
+.tooltip-panel.visible { display: block; }
+.tp-head { background: #293e40; color: #fff; padding: 9px 14px; }
+.tp-head .tp-eyebrow { font-size: 10px; opacity: 0.65; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+.tp-head .tp-title { font-size: 14px; font-weight: 500; }
+.tp-body { padding: 11px 14px; }
+.tp-section { margin-bottom: 10px; }
+.tp-section:last-child { margin-bottom: 0; }
+.tp-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; color: #888; margin-bottom: 4px; }
+.tp-text { font-size: 12px; color: #1a1a1a; line-height: 1.6; }
+.tp-text code { background: #eef3ff; color: #1565c0; padding: 1px 5px; border-radius: 3px; font-size: 11px; font-family: 'Courier New', monospace; }
+
+/* Hint bar */
+.hint-bar {
+  background: #e8f4fd; border: 1px solid #b3d8f5; border-radius: 4px;
+  padding: 8px 14px; margin-bottom: 16px;
+  font-size: 12px; color: #0d47a1; display: flex; align-items: center; gap: 8px;
+}
+.hint-bar i { font-size: 16px; flex-shrink: 0; }
+
+/* Footer */
+.sn-footer { text-align: center; padding: 20px; font-size: 11px; color: #aaa; }
+</style>
+</head>
+<body>
+
+<div class="sn-shell">
+  <div class="sn-logo"><i class="ti ti-shield-check" aria-hidden="true"></i> ServiceNow</div>
+  <div class="sn-nav">
+    <span>Change</span>
+    <span>CMDB</span>
+    <span>Approvals</span>
+    <span>Reports</span>
+  </div>
+</div>
+
+<div class="sn-subnav">
+  <div class="sn-breadcrumb">
+    <a href="#">Change</a> › <a href="#">All Changes</a> › New Record
+  </div>
+  <div class="sn-actions">
+    <button class="sn-btn">Save</button>
+    <button class="sn-btn">Update</button>
+    <button class="sn-btn primary">Submit</button>
+  </div>
+</div>
+
+<div class="sn-form-wrap">
+
+  <div class="hint-bar">
+    <i class="ti ti-info-circle" aria-hidden="true"></i>
+    Hover the <strong>&nbsp;i&nbsp;</strong> icon next to any field, or click into an input, to see guidance on what the field means and how to fill it.
+  </div>
+
+  <div class="sn-form-title">
+    Change Request — New
+    <span class="badge">Draft</span>
+  </div>
+
+  <div class="sn-section">
+    <div class="sn-section-header">Change Information</div>
+    <div class="sn-grid">
+
+      <!-- Number -->
+      <div class="sn-field" data-field="number">
+        <div class="field-label">Number <span class="info-icon" data-tip="number">i</span></div>
+        <div class="field-input"><div class="sn-readonly auto">CHG0012847</div></div>
+      </div>
+
+      <!-- Requested by -->
+      <div class="sn-field" data-field="requested_by">
+        <div class="field-label">Requested by <span class="req">*</span><span class="info-icon" data-tip="requested_by">i</span></div>
+        <div class="field-input"><input type="text" value="Abhay Jadhav" /></div>
+      </div>
+
+      <!-- Category -->
+      <div class="sn-field" data-field="category">
+        <div class="field-label">Category <span class="req">*</span><span class="info-icon" data-tip="category">i</span></div>
+        <div class="field-input">
+          <select>
+            <option value="">-- Select --</option>
+            <option>Application</option>
+            <option>Infrastructure</option>
+            <option>Hardware</option>
+            <option>Network</option>
+            <option>Database</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Type -->
+      <div class="sn-field" data-field="type">
+        <div class="field-label">Type <span class="req">*</span><span class="info-icon" data-tip="type">i</span></div>
+        <div class="field-input">
+          <select>
+            <option value="">-- Select --</option>
+            <option>Normal</option>
+            <option>Emergency</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- State -->
+      <div class="sn-field" data-field="state">
+        <div class="field-label">State <span class="info-icon" data-tip="state">i</span></div>
+        <div class="field-input">
+          <div class="sn-state">
+            <span class="sn-state-pill pill-new">New</span>
+            <span class="sn-state-pill pill-dim">Assess</span>
+            <span class="sn-state-pill pill-dim">Authorize</span>
+            <span class="sn-state-pill pill-dim">Scheduled</span>
+            <span class="sn-state-pill pill-dim">Implement</span>
+            <span class="sn-state-pill pill-dim">Closed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Normal Change Template -->
+      <div class="sn-field" data-field="template">
+        <div class="field-label">Normal Change Template <span class="info-icon" data-tip="template">i</span></div>
+        <div class="field-input">
+          <select>
+            <option value="">-- Blank --</option>
+            <option>Standard Patch</option>
+            <option>App Deployment</option>
+            <option>Config Change</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Reason -->
+      <div class="sn-field" data-field="reason">
+        <div class="field-label">Reason <span class="req">*</span><span class="info-icon" data-tip="reason">i</span></div>
+        <div class="field-input">
+          <select>
+            <option value="">-- Select --</option>
+            <option>Enhancement</option>
+            <option>DR</option>
+            <option>Retirement</option>
+            <option>Upgrade</option>
+            <option>Incident Fix</option>
+            <option>Regulatory</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Service Offering -->
+      <div class="sn-field" data-field="service_offering">
+        <div class="field-label">Service Offering <span class="req">*</span><span class="info-icon" data-tip="service_offering">i</span></div>
+        <div class="field-input"><input type="text" placeholder="Search application…" /></div>
+      </div>
+
+      <!-- CI -->
+      <div class="sn-field" data-field="ci">
+        <div class="field-label">Configuration Item <span class="req">*</span><span class="info-icon" data-tip="ci">i</span></div>
+        <div class="field-input"><input type="text" placeholder="Search CMDB…" /></div>
+      </div>
+
+      <!-- GxP -->
+      <div class="sn-field" data-field="gxp">
+        <div class="field-label">GxP Risk Level <span class="info-icon" data-tip="gxp">i</span></div>
+        <div class="field-input"><div class="sn-readonly muted">GxP High — auto-populated from APM</div></div>
+      </div>
+
+      <!-- SOX -->
+      <div class="sn-field full" data-field="sox">
+        <div class="field-label">SOX <span class="info-icon" data-tip="sox">i</span></div>
+        <div class="field-input">
+          <div class="checkbox-row">
+            <input type="checkbox" id="sox_cb" />
+            <label for="sox_cb">This change impacts SOX controls</label>
+          </div>
+          <div class="warn-text">
+            <i class="ti ti-alert-triangle" aria-hidden="true"></i>
+            If checked, work notes are required before submission.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /form-wrap -->
+
+<div class="sn-footer">Interactive demo · Hover <strong>i</strong> icons or click inputs for field guidance</div>
+
+<!-- Tooltip panel -->
+<div class="tooltip-panel" id="tipPanel" role="tooltip" aria-live="polite">
+  <div class="tp-head">
+    <div class="tp-eyebrow">Field guidance</div>
+    <div class="tp-title" id="tipTitle"></div>
+  </div>
+  <div class="tp-body">
+    <div class="tp-section">
+      <div class="tp-label">What it is</div>
+      <div class="tp-text" id="tipWhat"></div>
+    </div>
+    <div class="tp-section">
+      <div class="tp-label">How to fill</div>
+      <div class="tp-text" id="tipHow"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const tips = {
+  number: {
+    label: "Number",
+    what: "Auto-generated unique identifier for the change request (e.g., <code>CHGxxxxxxx</code>).",
+    how: "System-generated. Do not edit. Reference this number in all related communications, approvals, and tickets."
+  },
+  requested_by: {
+    label: "Requested by",
+    what: "Person who is formally requesting the change.",
+    how: "Defaults to the logged-in user. Update only if you are raising on someone else's behalf. Must be an active AD user."
+  },
+  category: {
+    label: "Category",
+    what: "Broad classification of the change (e.g., Hardware, Software, Network, Database, Application).",
+    how: "Select from dropdown: <code>Infrastructure</code> for platform/infra changes, <code>Application</code> for software/app changes."
+  },
+  type: {
+    label: "Type",
+    what: "Defines the approval workflow — <code>Normal</code> or <code>Emergency</code>.",
+    how: "<code>Normal</code> follows standard CAB approval. <code>Emergency</code> triggers expedited review — use only when justified and time-critical."
+  },
+  state: {
+    label: "State",
+    what: "Lifecycle stage of the change: New → Assess → Authorize → Scheduled → Implement → Review → Closed → Cancelled.",
+    how: "Updated automatically as approvals progress. Move forward manually only when entry/exit criteria for that state are met."
+  },
+  template: {
+    label: "Normal Change Template",
+    what: "Pre-approved change model applicable to the application.",
+    how: "Select the change model applicable to your application. If no change model is available, keep it blank."
+  },
+  reason: {
+    label: "Reason",
+    what: "Business reason driving this change.",
+    how: "Select from dropdown: <code>Enhancement</code>, <code>DR</code>, <code>Retirement</code>, <code>Upgrade</code>, etc. Choose the option that most accurately reflects the driver."
+  },
+  service_offering: {
+    label: "Service Offering",
+    what: "Business application the CI supports.",
+    how: "Select the application related to the change. Example: <code>iShift</code>."
+  },
+  ci: {
+    label: "Configuration Item",
+    what: "The specific asset, application, or service being changed.",
+    how: "Search the CMDB by CI name. Always pick the lowest-level CI that accurately represents the change. If the CI is missing, raise a CMDB update request before proceeding."
+  },
+  gxp: {
+    label: "GxP Risk Level",
+    what: "Non-editable field based on APM GxP Risk Classification.",
+    how: "Read-only — auto-populated from APM. No manual entry required or permitted."
+  },
+  sox: {
+    label: "SOX",
+    what: "Indicates whether this change impacts SOX controls.",
+    how: "Check this box if the change impacts SOX controls, else uncheck it. Work notes are required if this is checked."
+  }
+};
+
+const panel = document.getElementById('tipPanel');
+const tipTitle = document.getElementById('tipTitle');
+const tipWhat = document.getElementById('tipWhat');
+const tipHow = document.getElementById('tipHow');
+let currentAnchor = null;
+
+function showTip(key, anchor) {
+  const d = tips[key];
+  if (!d) return;
+  tipTitle.textContent = d.label;
+  tipWhat.innerHTML = d.what;
+  tipHow.innerHTML = d.how;
+  panel.classList.add('visible');
+  currentAnchor = anchor;
+  positionTip(anchor);
+}
+
+function hideTip() {
+  panel.classList.remove('visible');
+  currentAnchor = null;
+}
+
+function positionTip(anchor) {
+  const rect = anchor.getBoundingClientRect();
+  const pw = 310, ph = 200;
+  let left = rect.right + 10;
+  let top = rect.top - 24;
+  if (left + pw > window.innerWidth - 12) left = rect.left - pw - 10;
+  if (left < 8) left = 8;
+  if (top + ph > window.innerHeight - 12) top = window.innerHeight - ph - 12;
+  if (top < 8) top = 8;
+  panel.style.left = left + 'px';
+  panel.style.top = top + 'px';
+}
+
+// Info icon hover
+document.querySelectorAll('.info-icon').forEach(icon => {
+  icon.addEventListener('mouseenter', () => {
+    showTip(icon.dataset.tip, icon);
+    icon.classList.add('open');
+  });
+  icon.addEventListener('mouseleave', () => {
+    hideTip();
+    icon.classList.remove('open');
+  });
+});
+
+// Input focus
+document.querySelectorAll('.sn-field input[type=text], .sn-field select').forEach(input => {
+  const field = input.closest('.sn-field');
+  const key = field ? field.dataset.field : null;
+  if (!key) return;
+  input.addEventListener('focus', () => {
+    field.classList.add('active');
+    const icon = field.querySelector('.info-icon');
+    if (icon) showTip(key, icon);
+  });
+  input.addEventListener('blur', () => {
+    field.classList.remove('active');
+    hideTip();
+  });
+});
+
+// Reposition on scroll/resize
+window.addEventListener('scroll', () => {
+  if (currentAnchor) positionTip(currentAnchor);
+}, { passive: true });
+window.addEventListener('resize', () => {
+  if (currentAnchor) positionTip(currentAnchor);
+});
+</script>
+</body>
+</html>
